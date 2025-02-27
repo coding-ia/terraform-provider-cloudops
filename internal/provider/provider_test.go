@@ -7,7 +7,7 @@ import (
 )
 
 var testAccProtoV6ProviderFactories = map[string]func() (tfprotov6.ProviderServer, error){
-	"automation": providerserver.NewProtocol6WithError(New("dev")()),
+	"cloudops": providerserver.NewProtocol6WithError(New("dev")()),
 }
 
 func testAccPreCheck(t *testing.T) {
