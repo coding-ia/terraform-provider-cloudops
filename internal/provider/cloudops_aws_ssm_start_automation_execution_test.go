@@ -14,7 +14,7 @@ import (
 func TestAccSSMStartAutomationExecution_withParameters(t *testing.T) {
 	ctx := context.Background()
 	rName := acctest.RandomWithPrefix("tf-acc-test")
-	resourceName := "automation_aws_ssm_start_automation_execution.test"
+	resourceName := "cloudops_aws_ssm_start_automation_execution.test"
 
 	resource.Test(t, resource.TestCase{
 		ExternalProviders: map[string]resource.ExternalProvider{
@@ -48,7 +48,7 @@ func TestAccSSMStartAutomationExecution_withParameters(t *testing.T) {
 func TestAccSSMStartAutomationExecution_updateDefault(t *testing.T) {
 	ctx := context.Background()
 	rName := acctest.RandomWithPrefix("tf-acc-test")
-	resourceName := "automation_aws_ssm_start_automation_execution.test"
+	resourceName := "cloudops_aws_ssm_start_automation_execution.test"
 
 	resource.Test(t, resource.TestCase{
 		ExternalProviders: map[string]resource.ExternalProvider{
@@ -85,7 +85,7 @@ func TestAccSSMStartAutomationExecution_updateDefault(t *testing.T) {
 func TestAccSSMStartAutomationExecution_stopOnDelete(t *testing.T) {
 	ctx := context.Background()
 	rName := acctest.RandomWithPrefix("tf-acc-test")
-	resourceName := "automation_aws_ssm_start_automation_execution.test"
+	resourceName := "cloudops_aws_ssm_start_automation_execution.test"
 
 	resource.Test(t, resource.TestCase{
 		ExternalProviders: map[string]resource.ExternalProvider{
@@ -121,7 +121,7 @@ func TestAccSSMStartAutomationExecution_stopOnDelete(t *testing.T) {
 func TestAccSSMStartAutomationExecution_WaitForSuccessTimeout(t *testing.T) {
 	ctx := context.Background()
 	rName := acctest.RandomWithPrefix("tf-acc-test")
-	resourceName := "automation_aws_ssm_start_automation_execution.test"
+	resourceName := "cloudops_aws_ssm_start_automation_execution.test"
 
 	resource.Test(t, resource.TestCase{
 		ExternalProviders: map[string]resource.ExternalProvider{
@@ -147,7 +147,7 @@ func TestAccSSMStartAutomationExecution_WaitForSuccessTimeout(t *testing.T) {
 func TestAccSSMStartAutomationExecution_Basic(t *testing.T) {
 	ctx := context.Background()
 	rName := acctest.RandomWithPrefix("tf-acc-test")
-	resourceName := "automation_aws_ssm_start_automation_execution.test"
+	resourceName := "cloudops_aws_ssm_start_automation_execution.test"
 
 	resource.Test(t, resource.TestCase{
 		ExternalProviders: map[string]resource.ExternalProvider{
@@ -201,7 +201,7 @@ resource "aws_ssm_document" "test" {
 
 }
 
-resource "automation_aws_ssm_start_automation_execution" "test" {
+resource "cloudops_aws_ssm_start_automation_execution" "test" {
   document_name = aws_ssm_document.test.name
 
   parameters = {
@@ -242,7 +242,7 @@ resource "aws_ssm_document" "test" {
 
 }
 
-resource "automation_aws_ssm_start_automation_execution" "test" {
+resource "cloudops_aws_ssm_start_automation_execution" "test" {
   document_name = aws_ssm_document.test.name
 
   parameters = {
@@ -276,7 +276,7 @@ resource "aws_ssm_document" "test" {
 
 }
 
-resource "automation_aws_ssm_start_automation_execution" "test" {
+resource "cloudops_aws_ssm_start_automation_execution" "test" {
   document_name = aws_ssm_document.test.name
 }
 `, rName)
@@ -306,7 +306,7 @@ resource "aws_ssm_document" "test" {
 
 }
 
-resource "automation_aws_ssm_start_automation_execution" "test" {
+resource "cloudops_aws_ssm_start_automation_execution" "test" {
   document_name    = aws_ssm_document.test.name
   document_version = "1"
 }
@@ -337,7 +337,7 @@ resource "aws_ssm_document" "test" {
 
 }
 
-resource "automation_aws_ssm_start_automation_execution" "test" {
+resource "cloudops_aws_ssm_start_automation_execution" "test" {
   document_name = aws_ssm_document.test.name
 }
 `, rName)
@@ -367,7 +367,7 @@ resource "aws_ssm_document" "test" {
 
 }
 
-resource "automation_aws_ssm_start_automation_execution" "test" {
+resource "cloudops_aws_ssm_start_automation_execution" "test" {
   document_name                    = aws_ssm_document.test.name
   wait_for_success_timeout_seconds = 90
 }
@@ -519,7 +519,7 @@ resource "aws_ssm_document" "test" {
 
 }
 
-resource "automation_aws_ssm_start_automation_execution" "test" {
+resource "cloudops_aws_ssm_start_automation_execution" "test" {
   document_name = aws_ssm_document.test.name
 
   parameters = {

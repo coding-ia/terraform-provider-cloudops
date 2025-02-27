@@ -15,7 +15,7 @@ import (
 func TestAccSSMAssociation_basic(t *testing.T) {
 	ctx := context.Background()
 	rName := acctest.RandomWithPrefix("tf-acc-test")
-	resourceName := "automation_aws_ssm_association.test"
+	resourceName := "cloudops_aws_ssm_association.test"
 
 	resource.ParallelTest(t, resource.TestCase{
 		ExternalProviders: map[string]resource.ExternalProvider{
@@ -57,7 +57,7 @@ func TestAccSSMAssociation_basic(t *testing.T) {
 func TestAccSSMAssociation_applyOnlyAtCronInterval(t *testing.T) {
 	ctx := context.Background()
 	rName := acctest.RandomWithPrefix("tf-acc-test")
-	resourceName := "automation_aws_ssm_association.test"
+	resourceName := "cloudops_aws_ssm_association.test"
 
 	resource.ParallelTest(t, resource.TestCase{
 		ExternalProviders: map[string]resource.ExternalProvider{
@@ -98,7 +98,7 @@ func TestAccSSMAssociation_applyOnlyAtCronInterval(t *testing.T) {
 func TestAccSSMAssociation_withTargets(t *testing.T) {
 	ctx := context.Background()
 	rName := acctest.RandomWithPrefix("tf-acc-test")
-	resourceName := "automation_aws_ssm_association.test"
+	resourceName := "cloudops_aws_ssm_association.test"
 	oneTarget := `
 
 targets {
@@ -174,7 +174,7 @@ targets {
 func TestAccSSMAssociation_withParameters(t *testing.T) {
 	ctx := context.Background()
 	rName := acctest.RandomWithPrefix("tf-acc-test")
-	resourceName := "automation_aws_ssm_association.test"
+	resourceName := "cloudops_aws_ssm_association.test"
 
 	resource.Test(t, resource.TestCase{
 		ExternalProviders: map[string]resource.ExternalProvider{
@@ -217,7 +217,7 @@ func TestAccSSMAssociation_withAssociationName(t *testing.T) {
 	assocName1 := acctest.RandomWithPrefix("tf-acc-test")
 	assocName2 := acctest.RandomWithPrefix("tf-acc-test")
 	rName := acctest.RandomWithPrefix("tf-acc-test")
-	resourceName := "automation_aws_ssm_association.test"
+	resourceName := "cloudops_aws_ssm_association.test"
 
 	resource.ParallelTest(t, resource.TestCase{
 		ExternalProviders: map[string]resource.ExternalProvider{
@@ -259,7 +259,7 @@ func TestAccSSMAssociation_withAssociationNameAndScheduleExpression(t *testing.T
 	ctx := context.Background()
 	assocName := acctest.RandomWithPrefix("tf-acc-test")
 	rName := acctest.RandomWithPrefix("tf-acc-test")
-	resourceName := "automation_aws_ssm_association.test"
+	resourceName := "cloudops_aws_ssm_association.test"
 	scheduleExpression1 := "cron(0 16 ? * TUE *)"
 	scheduleExpression2 := "cron(0 16 ? * WED *)"
 
@@ -304,7 +304,7 @@ func TestAccSSMAssociation_withAssociationNameAndScheduleExpression(t *testing.T
 func TestAccSSMAssociation_withDocumentVersion(t *testing.T) {
 	ctx := context.Background()
 	rName := acctest.RandomWithPrefix("tf-acc-test")
-	resourceName := "automation_aws_ssm_association.test"
+	resourceName := "cloudops_aws_ssm_association.test"
 
 	resource.ParallelTest(t, resource.TestCase{
 		ExternalProviders: map[string]resource.ExternalProvider{
@@ -338,7 +338,7 @@ func TestAccSSMAssociation_withDocumentVersion(t *testing.T) {
 func TestAccSSMAssociation_withOutputLocation(t *testing.T) {
 	ctx := context.Background()
 	rName := acctest.RandomWithPrefix("tf-acc-test")
-	resourceName := "automation_aws_ssm_association.test"
+	resourceName := "cloudops_aws_ssm_association.test"
 
 	resource.ParallelTest(t, resource.TestCase{
 		ExternalProviders: map[string]resource.ExternalProvider{
@@ -389,7 +389,7 @@ func TestAccSSMAssociation_withOutputLocation(t *testing.T) {
 func TestAccSSMAssociation_withOutputLocation_s3Region(t *testing.T) {
 	ctx := context.Background()
 	rName := acctest.RandomWithPrefix("tf-acc-test")
-	resourceName := "automation_aws_ssm_association.test"
+	resourceName := "cloudops_aws_ssm_association.test"
 
 	resource.ParallelTest(t, resource.TestCase{
 		ExternalProviders: map[string]resource.ExternalProvider{
@@ -450,7 +450,7 @@ func TestAccSSMAssociation_withOutputLocation_s3Region(t *testing.T) {
 func TestAccSSMAssociation_withOutputLocation_waitForSuccessTimeout(t *testing.T) {
 	ctx := context.Background()
 	rName := acctest.RandomWithPrefix("tf-acc-test")
-	resourceName := "automation_aws_ssm_association.test"
+	resourceName := "cloudops_aws_ssm_association.test"
 
 	resource.ParallelTest(t, resource.TestCase{
 		ExternalProviders: map[string]resource.ExternalProvider{
@@ -486,7 +486,7 @@ func TestAccSSMAssociation_withOutputLocation_waitForSuccessTimeout(t *testing.T
 func TestAccSSMAssociation_withAutomationTargetParamName(t *testing.T) {
 	ctx := context.Background()
 	rName := acctest.RandomWithPrefix("tf-acc-test")
-	resourceName := "automation_aws_ssm_association.test"
+	resourceName := "cloudops_aws_ssm_association.test"
 
 	resource.ParallelTest(t, resource.TestCase{
 		ExternalProviders: map[string]resource.ExternalProvider{
@@ -528,7 +528,7 @@ func TestAccSSMAssociation_withAutomationTargetParamName(t *testing.T) {
 func TestAccSSMAssociation_withScheduleExpression(t *testing.T) {
 	ctx := context.Background()
 	rName := acctest.RandomWithPrefix("tf-acc-test")
-	resourceName := "automation_aws_ssm_association.test"
+	resourceName := "cloudops_aws_ssm_association.test"
 
 	resource.ParallelTest(t, resource.TestCase{
 		ExternalProviders: map[string]resource.ExternalProvider{
@@ -572,7 +572,7 @@ func TestAccSSMAssociation_withComplianceSeverity(t *testing.T) {
 	rName := acctest.RandomWithPrefix("tf-acc-test")
 	compSeverity1 := "HIGH"
 	compSeverity2 := "LOW"
-	resourceName := "automation_aws_ssm_association.test"
+	resourceName := "cloudops_aws_ssm_association.test"
 
 	resource.ParallelTest(t, resource.TestCase{
 		ExternalProviders: map[string]resource.ExternalProvider{
@@ -615,7 +615,7 @@ func TestAccSSMAssociation_withComplianceSeverity(t *testing.T) {
 func TestAccSSMAssociation_rateControl(t *testing.T) {
 	ctx := context.Background()
 	rName := acctest.RandomWithPrefix("tf-acc-test")
-	resourceName := "automation_aws_ssm_association.test"
+	resourceName := "cloudops_aws_ssm_association.test"
 
 	resource.ParallelTest(t, resource.TestCase{
 		ExternalProviders: map[string]resource.ExternalProvider{
@@ -658,7 +658,7 @@ func TestAccSSMAssociation_rateControl(t *testing.T) {
 func TestAccSSMAssociation_syncCompliance(t *testing.T) {
 	ctx := context.Background()
 	rName := "AWS-RunPatchBaselineAssociation"
-	resourceName := "automation_aws_ssm_association.test"
+	resourceName := "cloudops_aws_ssm_association.test"
 
 	resource.ParallelTest(t, resource.TestCase{
 		ExternalProviders: map[string]resource.ExternalProvider{
@@ -775,7 +775,7 @@ DOC
 
 }
 
-resource "automation_aws_ssm_association" "test" {
+resource "cloudops_aws_ssm_association" "test" {
   name        = %[1]q
 
   targets {
@@ -815,7 +815,7 @@ DOC
 
 }
 
-resource "automation_aws_ssm_association" "test" {
+resource "cloudops_aws_ssm_association" "test" {
   name                        = aws_ssm_document.test.name
   schedule_expression         = "cron(0 16 ? * TUE *)"
   apply_only_at_cron_interval = %[2]t
@@ -856,7 +856,7 @@ DOC
 
 }
 
-resource "automation_aws_ssm_association" "test" {
+resource "cloudops_aws_ssm_association" "test" {
   name = aws_ssm_document.test.name
   %s
 }
@@ -898,7 +898,7 @@ resource "aws_ssm_document" "test" {
 
 }
 
-resource "automation_aws_ssm_association" "test" {
+resource "cloudops_aws_ssm_association" "test" {
   name = aws_ssm_document.test.name
 
   parameters = {
@@ -948,7 +948,7 @@ resource "aws_ssm_document" "test" {
 
 }
 
-resource "automation_aws_ssm_association" "test" {
+resource "cloudops_aws_ssm_association" "test" {
   name = aws_ssm_document.test.name
 
   parameters = {
@@ -991,7 +991,7 @@ DOC
 
 }
 
-resource "automation_aws_ssm_association" "test" {
+resource "cloudops_aws_ssm_association" "test" {
   name             = aws_ssm_document.test.name
   association_name = %[2]q
 
@@ -1031,7 +1031,7 @@ DOC
 
 }
 
-resource "automation_aws_ssm_association" "test" {
+resource "cloudops_aws_ssm_association" "test" {
   association_name    = %[2]q
   name                = aws_ssm_document.test.name
   schedule_expression = %[3]q
@@ -1072,7 +1072,7 @@ DOC
 
 }
 
-resource "automation_aws_ssm_association" "test" {
+resource "cloudops_aws_ssm_association" "test" {
   name             = %[1]q
   document_version = aws_ssm_document.test.latest_version
 
@@ -1117,7 +1117,7 @@ DOC
 
 }
 
-resource "automation_aws_ssm_association" "test" {
+resource "cloudops_aws_ssm_association" "test" {
   name = aws_ssm_document.test.name
 
   targets {
@@ -1171,7 +1171,7 @@ DOC
 
 }
 
-resource "automation_aws_ssm_association" "test" {
+resource "cloudops_aws_ssm_association" "test" {
   name = aws_ssm_document.test.name
 
   targets {
@@ -1225,7 +1225,7 @@ DOC
 
 }
 
-resource "automation_aws_ssm_association" "test" {
+resource "cloudops_aws_ssm_association" "test" {
   name = aws_ssm_document.test.name
 
   targets {
@@ -1279,7 +1279,7 @@ func testAccAssociationConfig_outputLocationS3Region(rName string) string {
 	return ConfigCompose(
 		testAccAssociationWithOutputLocationS3RegionConfigBase(rName),
 		`
-resource "automation_aws_ssm_association" "test" {
+resource "cloudops_aws_ssm_association" "test" {
   name = aws_ssm_document.test.name
 
   targets {
@@ -1299,7 +1299,7 @@ func testAccAssociationConfig_outputLocationUpdateS3Region(rName string) string 
 	return ConfigCompose(
 		testAccAssociationWithOutputLocationS3RegionConfigBase(rName),
 		fmt.Sprintf(`
-resource "automation_aws_ssm_association" "test" {
+resource "cloudops_aws_ssm_association" "test" {
   name = aws_ssm_document.test.name
 
   targets {
@@ -1319,7 +1319,7 @@ func testAccAssociationConfig_outputLocationNoS3Region(rName string) string {
 	return ConfigCompose(
 		testAccAssociationWithOutputLocationS3RegionConfigBase(rName),
 		`
-resource "automation_aws_ssm_association" "test" {
+resource "cloudops_aws_ssm_association" "test" {
   name = aws_ssm_document.test.name
 
   targets {
@@ -1338,7 +1338,7 @@ func testAccAssociationConfig_outputLocationAndWaitForSuccess(rName string) stri
 	return ConfigCompose(
 		testAccAssociationWithOutputLocationS3RegionConfigBase(rName),
 		`
-resource "automation_aws_ssm_association" "test" {
+resource "cloudops_aws_ssm_association" "test" {
   name = aws_ssm_document.test.name
 
   targets {
@@ -1449,7 +1449,7 @@ DOC
 
 }
 
-resource "automation_aws_ssm_association" "test" {
+resource "cloudops_aws_ssm_association" "test" {
   name                             = aws_ssm_document.foo.name
   automation_target_parameter_name = "Directory"
 
@@ -1496,7 +1496,7 @@ DOC
 
 }
 
-resource "automation_aws_ssm_association" "test" {
+resource "cloudops_aws_ssm_association" "test" {
   name                = aws_ssm_document.test.name
   schedule_expression = "cron(0 16 ? * TUE *)"
 
@@ -1536,7 +1536,7 @@ DOC
 
 }
 
-resource "automation_aws_ssm_association" "test" {
+resource "cloudops_aws_ssm_association" "test" {
   name                = aws_ssm_document.test.name
   schedule_expression = "cron(0 16 ? * WED *)"
 
@@ -1576,7 +1576,7 @@ DOC
 
 }
 
-resource "automation_aws_ssm_association" "test" {
+resource "cloudops_aws_ssm_association" "test" {
   name                = aws_ssm_document.test.name
   association_name    = %[2]q
   compliance_severity = %[3]q
@@ -1617,7 +1617,7 @@ DOC
 
 }
 
-resource "automation_aws_ssm_association" "test" {
+resource "cloudops_aws_ssm_association" "test" {
   name            = aws_ssm_document.test.name
   max_concurrency = %[2]q
   max_errors      = %[2]q
@@ -1632,7 +1632,7 @@ resource "automation_aws_ssm_association" "test" {
 
 func testAccAssociationSyncComplianceConfig(rName, syncCompliance string) string {
 	return fmt.Sprintf(`
-resource "automation_aws_ssm_association" "test" {
+resource "cloudops_aws_ssm_association" "test" {
   name = %[1]q
   targets {
     key    = "InstanceIds"
