@@ -18,9 +18,15 @@ type AutomationProvider struct {
 	Meta    Meta
 }
 
+type AssumeRoleBlock struct {
+	RoleArn     types.String `tfsdk:"role_arn"`
+	SessionName types.String `tfsdk:"session_name"`
+}
+
 type ProviderConfigurationModel struct {
-	Profile types.String `tfsdk:"profile"`
-	Region  types.String `tfsdk:"region"`
+	Profile    types.String      `tfsdk:"profile"`
+	Region     types.String      `tfsdk:"region"`
+	AssumeRole []AssumeRoleBlock `tfsdk:"assume_role"`
 }
 
 func (ap *AutomationProvider) Metadata(ctx context.Context, request provider.MetadataRequest, response *provider.MetadataResponse) {
@@ -41,6 +47,22 @@ func (ap *AutomationProvider) Schema(ctx context.Context, request provider.Schem
 				Optional:    true,
 			},
 		},
+		Blocks: map[string]schema.Block{
+			"assume_role": schema.ListNestedBlock{
+				NestedObject: schema.NestedBlockObject{
+					Attributes: map[string]schema.Attribute{
+						"role_arn": schema.StringAttribute{
+							Optional:    true,
+							Description: "Amazon Resource Name (ARN) of an IAM Role to assume prior to making API calls.",
+						},
+						"session_name": schema.StringAttribute{
+							Optional:    true,
+							Description: "An identifier for the assumed role session.",
+						},
+					},
+				},
+			},
+		},
 	}
 }
 
@@ -56,6 +78,13 @@ func (ap *AutomationProvider) Configure(ctx context.Context, request provider.Co
 	opts := &conn.AWSConfigOptions{
 		Profile: config.Profile.ValueString(),
 		Region:  config.Region.ValueString(),
+	}
+
+	if config.AssumeRole != nil {
+		opts.AssumeRole = &conn.AWSConfigResumeRoleOptions{
+			RoleARN:     config.AssumeRole[0].RoleArn.ValueString(),
+			SessionName: config.AssumeRole[0].SessionName.ValueString(),
+		}
 	}
 
 	client := conn.CreateAWSClient(ctx, opts)
