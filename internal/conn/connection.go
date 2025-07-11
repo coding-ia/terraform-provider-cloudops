@@ -6,6 +6,7 @@ import (
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/aws/arn"
 	"github.com/aws/aws-sdk-go-v2/config"
+	"github.com/aws/aws-sdk-go-v2/credentials/stscreds"
 	"github.com/aws/aws-sdk-go-v2/service/ssm"
 	"github.com/aws/aws-sdk-go-v2/service/sts"
 )
@@ -17,9 +18,15 @@ type AWSClient struct {
 	Partition string
 }
 
+type AWSConfigResumeRoleOptions struct {
+	RoleARN     string
+	SessionName string
+}
+
 type AWSConfigOptions struct {
-	Profile string
-	Region  string
+	Profile    string
+	Region     string
+	AssumeRole *AWSConfigResumeRoleOptions
 }
 
 func CreateAWSClient(ctx context.Context, options *AWSConfigOptions) *AWSClient {
@@ -30,6 +37,17 @@ func CreateAWSClient(ctx context.Context, options *AWSConfigOptions) *AWSClient 
 
 	if options.Region != "" {
 		cfg.Region = options.Region
+	}
+
+	if options.AssumeRole != nil {
+		stsClient := sts.NewFromConfig(cfg)
+
+		optFns := func(o *stscreds.AssumeRoleOptions) {
+			o.RoleSessionName = options.AssumeRole.SessionName
+		}
+
+		creds := stscreds.NewAssumeRoleProvider(stsClient, options.AssumeRole.RoleARN, optFns)
+		cfg.Credentials = aws.NewCredentialsCache(creds)
 	}
 
 	ssmClient := ssm.NewFromConfig(cfg)
